@@ -2,6 +2,7 @@ package dnscheck
 
 import (
 	"TrustMail/internal/models"
+	"TrustMail/internal/util"
 	"context"
 	"net"
 	"strings"

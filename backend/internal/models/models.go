@@ -13,7 +13,7 @@ type User struct {
 	Role         string `json:"role"`
 	CreatedAt    string `json:"createdAt"`
 	DailyLimit   string `json:"dailyLimit"`
-	UsageCount   string `json:"usageCount"`
+	UsageCount   int    `json:"usageCount"`
 	UsageDate    string `json:"usageDate"`
 }
 
@@ -25,7 +25,7 @@ type PublicUser struct {
 	Email      string `json:"email"`
 	Role       string `json:"role"`
 	DailyLimit string `json:"dailyLimit"`
-	UsageCount string `json:"usageCount"`
+	UsageCount int    `json:"usageCount"`
 }
 
 func (u *User) Public() PublicUser {

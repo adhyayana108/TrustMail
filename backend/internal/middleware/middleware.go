@@ -3,6 +3,7 @@ package middleware
 import (
 	"TrustMail/internal/auth"
 	"TrustMail/internal/models"
+	"TrustMail/internal/storage"
 	"context"
 	"encoding/json"
 	"net/http"
