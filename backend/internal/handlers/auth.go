@@ -134,3 +134,5 @@ func (h *AuthHandler) Me(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, user.Public())
 
 }
+
+
