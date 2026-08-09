@@ -132,3 +132,5 @@ func extractDomains(r io.Reader) ([]string, error) {
 	}
 	return domains, nil
 }
+
+
