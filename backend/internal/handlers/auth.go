@@ -4,19 +4,21 @@ import (
 	"TrustMail/internal/auth"
 	"TrustMail/internal/middleware"
 	"TrustMail/internal/models"
+	"TrustMail/internal/util"
 	"encoding/json"
 	"net/http"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
-	"TrustMail/internal/storage"
+	storage "TrustMail/internal/storage"
 
 )
 
 type AuthHandler struct {
 	Store     *storage.Store
 	JWTSecret string
-	TokenTIL  time.Duration
+	TokenTTL  time.Duration
 }
 
 type registerRequest struct {
@@ -75,8 +77,8 @@ func (h *AuthHandler) Register(w http.ResponseWriter, r *http.Request) {
 		PasswordHash: auth.HashPassword(req.Password, salt),
 		PasswordSalt: salt,
 		Role:         "user",
-		CreatedAt:    time.Now(),
-		DailyLimit:   defaultDailyLimit,
+		CreatedAt:    time.Now().Format(time.RFC3339),
+		DailyLimit:   strconv.Itoa(defaultDailyLimit),
 	}
 
 	if err := h.Store.CreateUser(user); err != nil {
